@@ -213,7 +213,7 @@ layout = {
   }
 }
 
-sheet = SheetPDF.new content, layout
+s = SheetPDF.new content, layout
 s.save 'sheet.pdf'
 system 'open sheet.pdf' # this works in OSX
 ```
