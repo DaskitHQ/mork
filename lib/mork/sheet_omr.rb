@@ -34,7 +34,7 @@ module Mork
     # the maximum number of choices/questions allowed by the layout will be
     # evaluated.
     #
-    # @param choices [Fixnum, Array] the questions/choices we want subsequent
+    # @param choices [Integer, Array] the questions/choices we want subsequent
     #   scoring/overlaying to apply to. Normally, `choices` should be an array
     #   of integers, with each element indicating the number of available
     #   choices for the corresponding question (i.e. `choices.length` is the
@@ -47,7 +47,7 @@ module Mork
     def set_choices(choices)
       return false unless valid?
       @mim.set_ch case choices
-                  when Fixnum; @mim.choxq[0...choices]
+                  when Integer; @mim.choxq[0...choices]
                   when Array; choices
                   else raise ArgumentError, 'Invalid choice set'
                   end
@@ -65,7 +65,7 @@ module Mork
 
     # Sheet barcode as an integer
     #
-    # @return [Fixnum]
+    # @return [Integer]
     def barcode
       return if not_registered
       barcode_string.to_i(2)
@@ -84,8 +84,8 @@ module Mork
 
     # True if the specified question/choice cell has been marked
     #
-    # @param question [Fixnum] the question number, zero-based
-    # @param choice [Fixnum] the choice number, zero-based
+    # @param question [Integer] the question number, zero-based
+    # @param choice [Integer] the choice number, zero-based
     # @return [Boolean]
     def marked?(question, choice)
       return if not_registered
